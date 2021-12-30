@@ -1,0 +1,26 @@
+﻿@model webtest.Models.Account
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@using (Html.BeginForm())
+{<div class="form-group position-relative has-icon-left mb-4">
+    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @autofocus = "on" } })
+    <div class="form-control-icon">
+        <i class="bi bi-person"></i>
+    </div>
+</div>
+ <div class="form-group position-relative has-icon-left mb-4">
+     @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control",id="password1", @autocomplete = "off" } })
+     <div class="form-control-icon">
+         <i class="bi bi-shield-lock"></i>
+     </div>
+ </div>
+    <div class="form-check form-check-lg d-flex align-items-end">
+        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+}
+<script type="text/javascript">document.getElementById('password1').type = 'password';</script>

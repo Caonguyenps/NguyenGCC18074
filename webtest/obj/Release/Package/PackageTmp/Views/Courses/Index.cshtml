@@ -1,0 +1,68 @@
+﻿@model IEnumerable<webtest.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped" id="table1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.course_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.cat_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trainer.trainer_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_toeic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.account_id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.course_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.cat_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trainer.trainer_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course_toeic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.desription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.account_id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.course_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.course_id }, new { onclick = "return confirm('Are you sure you wish to delete this course?');" })
+            </td>
+        </tr>
+    }
+
+</table>

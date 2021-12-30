@@ -1,0 +1,54 @@
+﻿@model IEnumerable<webtest.Models.Topic>
+@{
+    ViewBag.Title = "Index Topic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped" id="table1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.topic_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.topic_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descriptions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.topic_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.topic_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descriptions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course_id)
+            </td>
+            <td>
+
+                @if (HttpContext.Current.Session["state"] != null && HttpContext.Current.Session["state"].ToString() == "1")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.topic_id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.topic_id }, new { onclick = "return confirm('Are you sure you wish to delete this Topic?');" })
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>

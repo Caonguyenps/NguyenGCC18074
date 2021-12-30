@@ -1,0 +1,72 @@
+﻿@model IEnumerable<webtest.Models.TrainingStaff>
+@{
+    ViewBag.Title = "Index Staff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped" id="table1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.training_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.training_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.day_of_birth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.local_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.account_id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.training_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.training_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.day_of_birth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.local_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.account_id)
+            </td>
+            <td>
+                @if (HttpContext.Current.Session["state"] != null && HttpContext.Current.Session["state"].ToString() == "1")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.training_id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.training_id }, new { onclick = "return confirm('Are you sure you wish to delete this Straff?');" })
+                }
+
+
+            </td>
+        </tr>
+    }
+
+</table>

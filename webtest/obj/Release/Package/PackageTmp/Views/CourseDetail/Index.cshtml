@@ -1,0 +1,44 @@
+﻿@model IEnumerable<webtest.Models.CourseDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped" id="table1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.course_detail_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.course_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.trainee_id)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.course_detail_id)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.course_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.trainee_id)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.course_detail_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.course_detail_id }, new { onclick = "return confirm('Are you sure you wish to delete this Course Detail?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

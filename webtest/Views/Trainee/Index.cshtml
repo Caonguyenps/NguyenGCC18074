@@ -1,0 +1,84 @@
+﻿@model IEnumerable<webtest.Models.Trainee>
+@{
+    ViewBag.Title = "Index Trainee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped" id="table1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.trainee_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trainee_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.day_of_birth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.local_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_toiec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.account_detail_id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.trainee_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trainee_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.day_of_birth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email_address))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.local_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course_toiec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.account_detail_id)
+            </td>
+            <td>
+                @if (HttpContext.Current.Session["state"] != null && HttpContext.Current.Session["state"].ToString() == "1")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.trainee_id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.trainee_id }, new { onclick = "return confirm('Are you sure you wish to delete this Trainee?');" })
+                }
+
+
+            </td>
+        </tr>
+    }
+
+</table>

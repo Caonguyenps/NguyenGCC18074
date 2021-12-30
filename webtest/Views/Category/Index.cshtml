@@ -1,0 +1,50 @@
+﻿@model IEnumerable<webtest.Models.Category>
+
+@{
+    ViewBag.Title = "Index Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped" id="table1">
+	<thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cat_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cat_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descriptions)
+            </th>
+        </tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.cat_id)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.cat_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descriptions)
+            </td>
+            <td>
+                @if(HttpContext.Current.Session["state"] != null && HttpContext.Current.Session["state"].ToString() == "1")
+                 {
+
+                    @Html.ActionLink("Edit", "Edit", new { id = item.cat_id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.cat_id }, new { onclick = "return confirm('Are you sure you wish to delete this cat?');" })
+                 }
+
+            </td>
+        </tr>
+		}
+	</tbody>
+</table>
